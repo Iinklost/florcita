@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Girasol Isabel</title>
+
+<style>
+body {
+    background: pink;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* FLOR */
+.flor {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    z-index: 1;
+}
+
+/* CENTRO */
+.centro {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background: #92400e;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+}
+
+/* BASE */
+.petalo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50% 50% 40% 40%;
+    transform-origin: center;
+}
+
+/* FONDO */
+.fondo {
+    width: 50px;
+    height: 90px;
+    background: #facc15;
+    z-index: 1;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(var(--rot))
+        translateY(-95px);
+}
+
+/* FRENTE */
+.frente {
+    width: 70px;
+    height: 110px;
+    background: yellow;
+    z-index: 5;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(var(--rot))
+        translateY(-95px)
+        scale(0);
+
+    transition: all 1.5s ease;
+}
+
+.frente.mostrar {
+    opacity: 1;
+    transform:
+        translate(-50%, -50%)
+        rotate(var(--rot))
+        translateY(-95px)
+        scale(1);
+}
+
+/* TEXTO */
+.frente span {
+    transform: rotate(calc(-1 * var(--rot)));
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+}
+
+/* ÁNGULOS */
+.p1 { --rot: 0deg; }
+.p2 { --rot: 60deg; }
+.p3 { --rot: 120deg; }
+.p4 { --rot: 180deg; }
+.p5 { --rot: 240deg; }
+.p6 { --rot: 300deg; }
+
+/* FONDO 12 */
+.bg1 { --rot: 0deg; }
+.bg2 { --rot: 30deg; }
+.bg3 { --rot: 60deg; }
+.bg4 { --rot: 90deg; }
+.bg5 { --rot: 120deg; }
+.bg6 { --rot: 150deg; }
+.bg7 { --rot: 180deg; }
+.bg8 { --rot: 210deg; }
+.bg9 { --rot: 240deg; }
+.bg10 { --rot: 270deg; }
+.bg11 { --rot: 300deg; }
+.bg12 { --rot: 330deg; }
+
+/* BOTONES */
+.botones {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#btnSi {
+    background: #22c55e;
+    color: white;
+}
+
+#btnNo {
+    background: #ef4444;
+    color: white;
+}
+
+/* MENSAJE (ARREGLADO) */
+.mensaje {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+
+    z-index: 9999; /* 🔥 SOLUCIÓN */
+}
+
+.mensaje.activo {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.contenido {
+    position: relative;
+    z-index: 10000;
+
+    background: #1e293b;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    max-width: 300px;
+
+    transform: scale(0.7);
+    transition: 0.4s;
+}
+
+.mensaje.activo .contenido {
+    transform: scale(1);
+}
+
+.contenido button {
+    margin-top: 15px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 10px;
+    background: #22c55e;
+    color: white;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="flor">
+
+    <!-- FONDO -->
+    <div class="petalo fondo bg1"></div>
+    <div class="petalo fondo bg2"></div>
+    <div class="petalo fondo bg3"></div>
+    <div class="petalo fondo bg4"></div>
+    <div class="petalo fondo bg5"></div>
+    <div class="petalo fondo bg6"></div>
+    <div class="petalo fondo bg7"></div>
+    <div class="petalo fondo bg8"></div>
+    <div class="petalo fondo bg9"></div>
+    <div class="petalo fondo bg10"></div>
+    <div class="petalo fondo bg11"></div>
+    <div class="petalo fondo bg12"></div>
+
+    <!-- CENTRO -->
+    <div class="centro">Isabel</div>
+
+    <!-- FRENTE -->
+    <div class="petalo frente p1"><span>Loca</span></div>
+    <div class="petalo frente p2"><span>Dramática</span></div>
+    <div class="petalo frente p3"><span>Divertida</span></div>
+    <div class="petalo frente p4"><span>Linda</span></div>
+    <div class="petalo frente p5"><span>Chambeadora</span></div>
+    <div class="petalo frente p6"><span>Bichota</span></div>
+
+</div>
+
+<!-- BOTONES -->
+<div class="botones">
+    <button id="btnSi">¿Te gustó?</button>
+    <button id="btnNo">¿No te gustó?</button>
+</div>
+
+<!-- MENSAJE -->
+<div id="mensajeBonito" class="mensaje">
+    <div class="contenido">
+        <h2>💛</h2>
+        <p>Sabía que te iba a gustar...</p>
+        <p><strong>Porque un Aries sabe tratar a una Cancer ♈💖♋</strong></p>
+        <button onclick="cerrarMensaje()">Cerrar</button>
+    </div>
+</div>
+
+<script>
+// animación pétalos
+document.querySelectorAll('.frente').forEach((p, i) => {
+    setTimeout(() => {
+        p.classList.add('mostrar');
+    }, i * 1500);
+});
+
+// botón SI
+document.getElementById("btnSi").addEventListener("click", () => {
+    document.getElementById("mensajeBonito").classList.add("activo");
+});
+
+// cerrar mensaje
+function cerrarMensaje() {
+    document.getElementById("mensajeBonito").classList.remove("activo");
+}
+
+// botón NO
+let escala = 1;
+document.getElementById("btnNo").addEventListener("click", function() {
+    escala -= 0.2;
+
+    if (escala <= 0) {
+        this.style.display = "none";
+    } else {
+        this.style.transform = `scale(${escala})`;
+    }
+});
+</script>
+
+</body>
+</html>
